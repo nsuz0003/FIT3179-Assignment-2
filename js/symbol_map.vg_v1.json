@@ -1,0 +1,56 @@
+{ 
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json", 
+  "title": "Share of the population with tertiary education (above 14 year)", 
+  "width": 800, 
+  "height": 600, 
+  "projection": {"type": "equirectangular"}, 
+  "data": { 
+    "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson", 
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"} 
+  }, 
+  
+  
+  "params":[ 
+    { 
+      "name": "year_select", 
+      "value": "1970",
+      "bind": {
+        "input": "select", 
+        "options" :["1970","1975","1980","1985","1990","1995","2000","2005","2010"],
+        "name": "Year select"
+      }
+    } 
+  ], 
+  "transform": [ 
+    { 
+      "lookup": "properties.ISO_A3", 
+      "from": { 
+        "data": { 
+          "url": "data/tertiary_data_raw.csv" 
+        }, 
+        "key": "Code", 
+        "fields": ["Year","Percentage"]
+      }
+    },
+    {
+      "fold": ["Year", "Percentage"]
+    }
+  ], 
+  "mark": {"type": "geoshape"}, 
+  "encoding": { 
+    "color": { 
+      "field": "Percentage", 
+      "type": "quantitative", 
+      "scale": { 
+        "type": "threshold", 
+        "domain": [0,5,10,15,20], 
+        "scheme": "blues" 
+      } 
+    }, 
+    "tooltip": [ 
+      {"field": "properties.NAME", "type": "nominal", "title": "Country"}, 
+      {"field": "Percentage", "type": "quantitative"},
+      {"field": "Year", "type": "quantitative"}
+    ] 
+  } 
+}
