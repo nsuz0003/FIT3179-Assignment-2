@@ -1,7 +1,4 @@
 {
-    "name": "tree",
-    "values": [
-        {
             "id": 0,
             "name": "all"
         },
@@ -225,5 +222,3 @@
             "parent": 11,
             "people": 490.3
         }
-    ]
-}
