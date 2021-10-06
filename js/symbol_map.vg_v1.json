@@ -35,6 +35,11 @@
     {
       "fold": ["Year", "Percentage"]
     }
+    ,
+    {
+      "filter":"Year == year_select"
+    }
+
   ], 
   "mark": {"type": "geoshape"}, 
   "encoding": { 

@@ -1,0 +1,37 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Government expenditure on education",
+    "width": 800,
+    "height": 600,
+    "params": [
+      {
+        "name": "country_select",
+        "value": "AUS",
+        "bind": {
+          
+        }
+      }
+    ],
+    "data": {
+      "url": "https://raw.githubusercontent.com/nsuz0003/FIT3179-Assignment-2/main/data/government_spending.csv"
+    },
+    "transform": [
+      {"filter": "datum.Code == country_select"},
+      {"filter": "datum.Value != null"}
+  
+    ],
+    "mark": "line",
+    "encoding": {
+      "x": { 
+        "field": "Year", 
+        "type": "quantitative", 
+        "title": "Year" 
+      }, 
+      "y": { 
+        "field": "Value", 
+        "type": "quantitative",
+        "title": "% of government expenditure on education"
+      }
+    }
+    
+  }
