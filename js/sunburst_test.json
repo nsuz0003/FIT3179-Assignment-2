@@ -1,0 +1,71 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "description": "An example of a space-fulling radial layout for hierarchical data.",
+    "width": 600,
+    "height": 600,
+    "padding": 5,
+    "autosize": "none",
+  
+    "data": [
+      {
+        "name": "tree_data",
+        "url": "https://raw.githubusercontent.com/nsuz0003/FIT3179-Assignment-2/main/js/education.json",
+        "transform": [
+              {
+                "type": "stratify",
+                "key": "id",
+                "parentKey": "parent"
+              },
+              {
+                "type": "partition",
+                "field": "people",
+                "sort": {"field": "value"},
+                "size": [{"signal": "2 * PI"}, {"signal": "width / 2"}],
+                "as": ["a0", "r0", "a1", "r1", "depth", "children"]
+              }
+            ]
+      }
+    ],
+  
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "range": {"scheme": "tableau20"}
+    }
+  ],
+
+  "legends": [
+    {"orient": "top-left", "fill": "color", "offset": 0, "zindex": 1}
+  ],
+
+  "marks": [
+    {
+      "type": "arc",
+      "from": {"data": "tree_data"},
+      "encode": {
+        "enter": {
+          "x": {"signal": "width / 2"},
+          "y": {"signal": "height / 2"},
+          "fill": {"scale": "color", "field": "group"},
+          "tooltip": {"signal": "datum.name + (datum.estsize ? ', ' + format(datum.estsize, ',.0f') + ' bytes' : '')"}
+        },
+        "update": {
+          "startAngle": {"field": "a0"},
+          "endAngle": {"field": "a1"},
+          "innerRadius": {"field": "r0"},
+          "outerRadius": {"field": "r1"},
+          "stroke": {"value": "white"},
+          "strokeWidth": {"value": 0.5},
+          "opacity" : {"signal": "1 / (datum.depth/2)"},
+          "zindex": {"value": 0}
+        },
+        "hover": {
+          "stroke": {"value": "red"},
+          "strokeWidth": {"value": 2},
+          "zindex": {"value": 1}
+        }
+      }
+    }
+  ]
+}
