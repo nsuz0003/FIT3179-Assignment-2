@@ -1,0 +1,229 @@
+{
+    "name": "tree",
+    "values": [
+        {
+            "id": 0,
+            "name": "all"
+        },
+        {
+            "id": 1,
+            "name": "Natural and physical sciences",
+            "group": "Natural and physical sciences",
+            "parent": 0
+        },
+        {
+            "id": 2,
+            "name": "Information technology",
+            "group": "Information technology",
+            "parent": 0
+        },
+        {
+            "id": 3,
+            "name": "Engineering and related technologies",
+            "group": "Engineering and related technologies",
+            "parent": 0
+        },
+        {
+            "id": 4,
+            "name": "Architecture and building",
+            "group": "Architecture and building",
+            "parent": 0
+        },
+        {
+            "id": 5,
+            "name": "Agriculture, environmental and related studies",
+            "group": "Agriculture, environmental and related studies",
+            "parent": 0
+        },
+        {
+            "id": 6,
+            "name": "Health",
+            "group": "Health",
+            "parent": 0
+        },
+        {
+            "id": 7,
+            "name": "Education",
+            "group": "Education",
+            "parent": 0
+        },
+        {
+            "id": 8,
+            "name": "Management and commerce",
+            "group": "Management and commerce",
+            "parent": 0
+        },
+        {
+            "id": 9,
+            "name": "Society and culture",
+            "group": "Society and culture",
+            "parent": 0
+        },
+        {
+            "id": 10,
+            "name": "Creative arts",
+            "group": "Creative arts",
+            "parent": 0
+        },
+        {
+            "id": 11,
+            "name": "Food, hospitality and personal services",
+            "group": "Food, hospitality and personal services",
+            "parent": 0
+        },
+        {
+            "id": 12,
+            "name": "Natural and physical sciences - male",
+            "group": "Natural and physical sciences",
+            "parent": 1,
+            "people": 245.5
+        },
+        {
+            "id": 13,
+            "name": "Natural and physical sciences - female",
+            "group": "Natural and physical sciences",
+            "parent": 1,
+            "people": 257.0
+        },
+        {
+            "id": 14,
+            "name": "Information technology - male",
+            "group": "Information technology",
+            "parent": 2,
+            "people": 378.3
+        },
+        {
+            "id": 15,
+            "name": "Information technology - female",
+            "group": "Information technology",
+            "parent": 2,
+            "people": 142.9
+        },
+        {
+            "id": 16,
+            "name": "Engineering and related technologies - male",
+            "group": "Engineering and related technologies",
+            "parent": 3,
+            "people": 1653.4
+        },
+        {
+            "id": 17,
+            "name": "Engineering and related technologies - female",
+            "group": "Engineering and related technologies",
+            "parent": 3,
+            "people": 187.2
+        },
+        {
+            "id": 18,
+            "name": "Architecture and building - male",
+            "group": "Architecture and building",
+            "parent": 4,
+            "people": 625.5
+        },
+        {
+            "id": 19,
+            "name": "Architecture and building - female",
+            "group": "Architecture and building",
+            "parent": 4,
+            "people": 95.6
+        },
+        {
+            "id": 20,
+            "name": "Agriculture, environmental and related studies - male",
+            "group": "Agriculture, environmental and related studies",
+            "parent": 5,
+            "people": 193.0
+        },
+        {
+            "id": 21,
+            "name": "Agriculture, environmental and related studies - female",
+            "group": "Agriculture, environmental and related studies",
+            "parent": 5,
+            "people": 113.0
+        },
+        {
+            "id": 22,
+            "name": "Health - male",
+            "group": "Health",
+            "parent": 6,
+            "people": 338.3
+        },
+        {
+            "id": 23,
+            "name": "Health - female",
+            "group": "Health",
+            "parent": 6,
+            "people": 942.2
+        },
+        {
+            "id": 24,
+            "name": "Education - male",
+            "group": "Education",
+            "parent": 7,
+            "people": 204.8
+        },
+        {
+            "id": 25,
+            "name": "Education - female",
+            "group": "Education",
+            "parent": 7,
+            "people": 672.3
+        },
+        {
+            "id": 26,
+            "name": "Management and commerce - male",
+            "group": "Management and commerce",
+            "parent": 8,
+            "people": 1279.6
+        },
+        {
+            "id": 27,
+            "name": "Management and commerce - female",
+            "group": "Management and commerce",
+            "parent": 8,
+            "people": 1853.9
+        },
+        {
+            "id": 28,
+            "name": "Society and culture - male",
+            "group": "Society and culture",
+            "parent": 9,
+            "people": 638.5
+        },
+        {
+            "id": 29,
+            "name": "Society and culture - female",
+            "group": "Society and culture",
+            "parent": 9,
+            "people": 1368.0
+        },
+        {
+            "id": 30,
+            "name": "Creative arts - male",
+            "group": "Creative arts",
+            "parent": 10,
+            "people": 260.5
+        },
+        {
+            "id": 31,
+            "name": "Creative arts - female",
+            "group": "Creative arts",
+            "parent": 10,
+            "people": 357.0
+        },
+        {
+            "id": 32,
+            "name": "Food, hospitality and personal services - male",
+            "group": "Food, hospitality and personal services",
+            "parent": 11,
+            "people": 251.3
+        },
+        {
+            "id": 33,
+            "name": "Food, hospitality and personal services - female",
+            "group": "Food, hospitality and personal services",
+            "parent": 11,
+            "people": 490.3
+        }
+    ]
+}
