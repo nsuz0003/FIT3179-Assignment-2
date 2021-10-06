@@ -1,0 +1,68 @@
+[
+    {
+      "ID": 0,
+      "Field": "Natural and physical sciences",
+      "Male": "245.5",
+      "Female": "257.0"
+    },
+    {
+      "ID": 1,
+      "Field": "Information technology",
+      "Male": "378.3",
+      "Female": "142.9"
+    },
+    {
+      "ID": 2,
+      "Field": "Engineering and related technologies",
+      "Male": "1,653.4",
+      "Female": "187.2"
+    },
+    {
+      "ID": 3,
+      "Field": "Architecture and building",
+      "Male": "625.5",
+      "Female": "95.6"
+    },
+    {
+      "ID": 4,
+      "Field": "Agriculture, environmental and related studies",
+      "Male": "193.0",
+      "Female": "113.0"
+    },
+    {
+      "ID": 5,
+      "Field": "Health",
+      "Male": "338.3",
+      "Female": "942.2"
+    },
+    {
+      "ID": 6,
+      "Field": "Education",
+      "Male": "204.8",
+      "Female": "672.3"
+    },
+    {
+      "ID": 7,
+      "Field": "Management and commerce",
+      "Male": "1,279.6",
+      "Female": "1,853.9"
+    },
+    {
+      "ID": 8,
+      "Field": "Society and culture",
+      "Male": "638.5",
+      "Female": "1,368.0"
+    },
+    {
+      "ID": 9,
+      "Field": "Creative arts",
+      "Male": "260.5",
+      "Female": "357.0"
+    },
+    {
+      "ID": 10,
+      "Field": "Food, hospitality and personal services",
+      "Male": "251.3",
+      "Female": "490.3"
+    }
+   ]
