@@ -200,7 +200,7 @@
               "signal": "if(width >= height, height, width) * 0.05"
             },
             "text": [{
-              "signal": "format(datum.total/1000,'.1f') + 'k Gradutes'"
+              "signal": "format(datum.total/1000,'.1f') + 'k Graduates'"
             }
             ]
           }
