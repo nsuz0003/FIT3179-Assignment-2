@@ -1,0 +1,67 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Graduates by level",
+    "width": 600,
+    "height": 600,
+    "data": {
+        "url": "https://raw.githubusercontent.com/nsuz0003/FIT3179-Assignment-2/main/data/graduate%20level.csv"
+    },
+    "params": [
+        {
+            "name": "level",
+            "select": {"type": "point", "fields": ["key"]}
+        }
+    ],
+    "transform": [
+        {
+            "fold": [
+                "Short-cycle",
+                "Bachelors",
+                "Masters",
+                "Doctoral"
+            ]
+        },
+        {"filter": "level.key == null || datum.key == level.key"},
+        {
+            "calculate": "if(datum.key == 'Bachelors',0,if(datum.key == 'Short-cycle',1,if(datum.key == 'Masters',2,3)))",
+            "as": "sort-order"
+        }
+    ],
+    "mark": "area",
+    "encoding": {
+        "x": {
+            "timeUnit": "yearmonth",
+            "field": "Year",
+            "axis": {
+                "format": "%Y"
+            },
+            "title": "Year"
+        },
+        "y": {
+            "aggregate": "sum",
+            "field": "value",
+            "title": "Graduates"
+        },
+        "color": {
+            "field": "key",
+            "type": "nominal",
+            
+            "scale": {
+              "domain": [
+                "Bachelors",
+                "Short-cycle",
+                "Masters",
+                "Doctoral"
+            ],
+                "scheme": "accent"
+            }
+        },
+        "order": {
+            "field": "sort-order"
+        },
+        "opacity": {
+            "condition": {"param": "level", "value": 1},
+            "value": 0.2
+          }
+    }
+}

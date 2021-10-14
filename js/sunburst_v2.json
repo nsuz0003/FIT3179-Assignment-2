@@ -1,0 +1,211 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "description": "An example of a space-fulling radial layout for hierarchical data.",
+    "width": 600,
+    "height": 600,
+    "padding": 50,
+    "autosize": "none",
+    "title": {
+      "text": "Field of Graduates in Australia (2019)",
+      "frame": "group"
+    },
+    "signals": [
+      {
+        "name": "select",
+        "value": {"value":""},
+        "on": [
+          {
+            "events": "@mark:click",
+            "update": "{value: datum.Field}"
+          },
+          {
+            "events": "mouseup",
+            "update": "{value: null}"
+          }
+        ]
+      }
+    ],
+    "data": [
+      {
+        "name": "data",
+        "url": "https://raw.githubusercontent.com/nsuz0003/FIT3179-Assignment-2/main/data/graduates.csv",
+        "format": {
+        "type": "csv"
+      },
+      "transform": [
+        {"type": "fold", "fields": ["Male", "Female"]},
+        {
+    "type": "nest",
+    "generate": true,
+    "keys": ["Field"]
+  },
+  
+          {
+            "type": "partition",
+            "field": "value",
+            "sort": {
+              "field": "value"
+            },
+            "size": [
+              {
+                "signal": "2 * PI"
+              },
+              {
+                "signal": "width>height ? (height-10)/2 : (width-10) / 2"
+              }
+            ],
+            "as": [
+              "a0",
+              "r0",
+              "a1",
+              "r1",
+              "depth",
+              "children"
+            ]
+          },
+          {"type": "formula", "as": "Field", "expr": "datum.Field == null ? datum.key : datum.Field"},
+          {
+            "type": "filter",
+            "expr": "datum.depth != 0"
+          },
+          {
+            "type": "filter",
+            "expr": "select.value == '' || select.value == null || datum.Field == select.value || datum.depth != 2"
+          }
+      ]
+      },{
+        "name": "total",
+        "url": "https://raw.githubusercontent.com/nsuz0003/FIT3179-Assignment-2/main/data/graduates.csv",
+        "format": {
+        "type": "csv"
+      },
+      "transform": [
+        {"type": "formula", "as": "sum", "expr": "parseInt(datum.Male) + parseInt(datum.Female)"},
+        {"type": "aggregate",
+            "fields": ["sum"],
+            "ops":["sum"],
+            "as":["total"]}
+        ]
+      }
+    ],
+    "scales": [
+      {
+        "name": "color",
+        "type": "ordinal",
+        "range": {"scheme": "tableau20"}
+      }
+    ],
+    "legends": [
+      {
+        "orient": "top-left",
+        "fill": "color",
+        "zindex": 1,
+        "title": "Field"
+      }
+    ],"marks": [
+      {
+        "type": "arc",
+        "name": "mark",
+        "interactive": true,
+        "from": {
+          "data": "data"
+        },
+        "encode": {
+          "enter": {
+            "x": {
+              "signal": "width / 2"
+            },
+            "y": {
+              "signal": "height / 2"
+            },
+            "fill": {
+              "scale": "color",
+              "field": "Field"
+            },
+        "fillOpacity": {"signal": "datum.key == 'Female' ? 0.5 : 0.8"},
+            "tooltip": {
+              "signal": "datum.Field + (datum.key != datum.Field ? ' - ' + datum.key : '') + (datum.value ? ': ' + datum.value + ' people' : '')"
+            }
+          },
+          "update": {
+            "startAngle": {
+              "field": "a0"
+            },
+            "endAngle": {
+              "field": "a1"
+            },
+            "innerRadius": {
+              "field": "r0"
+            },
+            "outerRadius": {
+              "field": "r1"
+            },
+            "stroke": {
+              "value": "white"
+            },
+            "strokeWidth": {
+              "value": 0.5
+            },
+            "opacity": {
+              "signal": "1 / (datum.depth/2)"
+            },
+            "zindex": {
+              "value": 0
+            }
+          },
+          "hover": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeWidth": {
+              "value": 2
+            },
+            "zindex": {
+              "value": 1
+            }
+          }
+        }
+      },
+      {
+        "from": {
+          "data": "total"
+        },
+        "type": "text",
+        "encode": {
+          "enter": {
+            "fill": {
+              "value": "#525252"
+            },
+            "text": {
+              "value": ""
+            }
+          },
+          "update": {
+            "opacity": {
+              "value": 1
+            },
+            "x": {
+              "signal": "width / 2"
+            },
+            "y": {
+              "signal": "height / 2"
+            },
+            "align": {
+              "value": "center"
+            },
+            "baseline": {
+              "value": "middle"
+            },
+            "fontSize": {
+              "signal": "if(width >= height, height, width) * 0.05"
+            },
+            "text": [{
+              "signal": "format(datum.total/1000,'.1f') + 'k Gradutes'"
+            }
+            ]
+          }
+        }
+      }]
+  }
+  
+   

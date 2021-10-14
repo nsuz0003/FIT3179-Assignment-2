@@ -25,7 +25,7 @@
     {
       "title": "Share of the population with tertiary education (above 14 year)",
       "width": 800,
-      "height": 600,
+      "height": 400,
       "projection": {
         "type": "equirectangular"
       },
@@ -42,11 +42,11 @@
             "type": "geoshape",
             "fill": "lightgray",
             "stroke": "White",
-            "tooltip": {"signal": "datum.properties.NAME + ': no data'"}
+            "tooltip": {
+              "signal": "datum.properties.NAME + ': no data'"
+            }
           },
-          "encoding": {
-            
-          },
+          "encoding": {},
           "params": [
             {
               "name": "country_select",
@@ -100,7 +100,6 @@
               "scale": {
                 "type": "threshold",
                 "domain": [
-                  0,
                   5,
                   10,
                   15,
@@ -128,26 +127,93 @@
               }
             ]
           }
+        },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/nsuz0003/Week-9-HW/main/data/tertiary_data_raw.csv"
+          },
+          "transform": [
+            {
+              "filter": "datum.Year == year_select"
+            },
+            {
+              "calculate": "parseFloat(datum.Percentage)",
+              "as": "float"
+            },
+            {
+              "window": [
+                {
+                  "op": "rank",
+                  "as": "ranking"
+                }
+              ],
+              "sort": [
+                {
+                  "field": "float",
+                  "order": "descending"
+                }
+              ]
+            },
+            {
+              "filter": "datum.ranking == 1"
+            },
+            {
+              "calculate": "'Country with most people who completed Tertirary education: ' + datum.Country",
+              "as": "text"
+            },
+            {
+              "calculate": "-180",
+              "as": "x"
+            },
+            {
+              "calculate": "-90",
+              "as": "y"
+            }
+            
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dy": -5
+          },
+          "encoding": {
+            
+            "longitude": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "y",
+          "type": "quantitative"
+        },
+            "text": {
+              "field": "text"
+            }
+          }
         }
       ]
     },
     {
-      "title": "Government expenditure on education",
-      "width": 800,
-      "height": 600,
+      "height": 400,
+      "width": 450,
       "transform": [
         {
           "filter": "datum.Code == country_select.Code"
         },
         {
           "filter": "datum.Value != null"
+        },
+        {
+          "calculate": "datum.Code + 'Government expenditure on education'",
+          "as": "title"
         }
       ],
-      "mark": "line",
+      "title": {"text": {"expr": "country_select.Code + ': Government expenditure on education'"}},
+      "mark": "bar",
       "encoding": {
         "x": {
           "field": "Year",
-          "type": "quantitative",
+          "type": "nominal",
           "title": "Year"
         },
         "y": {
@@ -156,7 +222,7 @@
           "title": "% of government expenditure on education"
         },
         "color": {
-          "value": "Orange"
+          "value": "Green"
         }
       }
     }

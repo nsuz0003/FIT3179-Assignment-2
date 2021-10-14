@@ -1,12 +1,44 @@
 #symbol_map {
-	display: block;
-	top: 50%;
-	left: 50%;
-	margin-left: -900px;
+	display: inline-block;
+	width: 1500px;
+	margin-left: 0;
 	/*height: 720px;
 	width: 1280px;*/
 }
 #sunburst {
-	display: block;
-	left: 7%;
+	display: inline-block;
+}
+#area {
+	display: inline-block;
+}
+#text1 {
+
+	text-align: left;
+	font-family: Lucida Sans Unicode;
+	width: fit-content;
+}
+p {
+	width: 300px;
+ }
+#text2 {
+	font-family: Lucida Sans Unicode; 
+  	width: fit-content;
+}
+.column {
+	float: left;
+	vertical-align: top;
+  }
+  
+  /* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+/* headings */
+.centred { 
+	margin: auto;
+	padding: 10px;
+	text-align: center;
+	font-family: Lucida Sans Unicode; 
 }

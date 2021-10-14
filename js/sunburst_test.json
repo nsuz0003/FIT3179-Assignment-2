@@ -1,69 +1,199 @@
 {
-    "$schema": "https://vega.github.io/schema/vega/v5.json",
-    "description": "An example of a space-fulling radial layout for hierarchical data.",
-    "width": 600,
-    "height": 600,
-    "padding": 5,
-    "autosize": "none",
-  
-    "data": [
-      {
-        "name": "tree_data",
-        "url": "https://raw.githubusercontent.com/nsuz0003/FIT3179-Assignment-2/main/js/education.json",
-        "transform": [
-              {
-                "type": "stratify",
-                "key": "id",
-                "parentKey": "parent"
-              },
-              {
-                "type": "partition",
-                "field": "people",
-                "sort": {"field": "value"},
-                "size": [{"signal": "2 * PI"}, {"signal": "width / 2"}],
-                "as": ["a0", "r0", "a1", "r1", "depth", "children"]
-              }
-            ]
-      }
-    ],
-  
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "An example of a space-fulling radial layout for hierarchical data.",
+  "width": 600,
+  "height": 600,
+  "padding": 50,
+  "autosize": "none",
+  "title": {
+    "text": "Main Fields of people in Australia with at least one qualification",
+    "frame": "group"
+  },
+  "signals": [
+    {
+      "name": "select",
+      "value": "",
+      "on": [
+        {
+          "events": "@mark:click",
+          "update": "{value: datum.id}"
+        },
+        {
+          "events": "mouseup",
+          "update": "{value: null}"
+        }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "name": "tree_data",
+      "url": "https://raw.githubusercontent.com/nsuz0003/FIT3179-Assignment-2/main/js/education.json",
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "partition",
+          "field": "people",
+          "sort": {
+            "field": "value"
+          },
+          "size": [
+            {
+              "signal": "2 * PI"
+            },
+            {
+              "signal": "width>height ? (height-10)/2 : (width-10) / 2"
+            }
+          ],
+          "as": [
+            "a0",
+            "r0",
+            "a1",
+            "r1",
+            "depth",
+            "children"
+          ]
+        },
+        {
+          "type": "filter",
+          "expr": "datum.depth != 0"
+        },
+        {
+          "type": "filter",
+          "expr": "datum.id == select.value || datum.parent == select.value || datum.depth != 2"
+        }
+      ]
+    },
+    {
+      "name": "total",
+      "url": "https://raw.githubusercontent.com/nsuz0003/FIT3179-Assignment-2/main/js/education.json",
+      "transform": [
+        {"type": "aggregate",
+          "fields": ["people"],
+          "ops":["sum"],
+          "as":["sum"]}
+      ]
+    }],
   "scales": [
     {
       "name": "color",
       "type": "ordinal",
-      "range": {"scheme": "tableau20"}
+      "range": {
+        "scheme": "tableau20"
+      }
     }
   ],
-
   "legends": [
-    {"orient": "top-left", "fill": "color", "offset": 0, "zindex": 1}
+    {
+      "orient": "top-left",
+      "fill": "color",
+      "zindex": 1,
+      "title": "Field"
+    }
   ],
-
   "marks": [
     {
       "type": "arc",
-      "from": {"data": "tree_data"},
+      "name": "mark",
+      "interactive": true,
+      "from": {
+        "data": "tree_data"
+      },
       "encode": {
         "enter": {
-          "x": {"signal": "width / 2"},
-          "y": {"signal": "height / 2"},
-          "fill": {"scale": "color", "field": "group"},
-          "tooltip": {"signal": "datum.name + (datum.estsize ? ', ' + format(datum.estsize, ',.0f') + ' bytes' : '')"}
+          "x": {
+            "signal": "width / 2"
+          },
+          "y": {
+            "signal": "height / 2"
+          },
+          "fill": {
+            "scale": "color",
+            "field": "group"
+          },
+          "tooltip": {
+            "signal": "datum.name + (datum.people ? ': ' + datum.people + ' thousand people' : '')"
+          }
         },
         "update": {
-          "startAngle": {"field": "a0"},
-          "endAngle": {"field": "a1"},
-          "innerRadius": {"field": "r0"},
-          "outerRadius": {"field": "r1"},
-          "stroke": {"value": "white"},
-          "strokeWidth": {"value": 0.5},
-          "opacity" : {"signal": "1 / (datum.depth/2)"},
-          "zindex": {"value": 0}
+          "startAngle": {
+            "field": "a0"
+          },
+          "endAngle": {
+            "field": "a1"
+          },
+          "innerRadius": {
+            "field": "r0"
+          },
+          "outerRadius": {
+            "field": "r1"
+          },
+          "stroke": {
+            "value": "white"
+          },
+          "strokeWidth": {
+            "value": 0.5
+          },
+          "opacity": {
+            "signal": "1 / (datum.depth/2)"
+          },
+          "zindex": {
+            "value": 0
+          }
         },
         "hover": {
-          "stroke": {"value": "red"},
-          "strokeWidth": {"value": 2},
-          "zindex": {"value": 1}
+          "stroke": {
+            "value": "red"
+          },
+          "strokeWidth": {
+            "value": 2
+          },
+          "zindex": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "from": {
+        "data": "total"
+      },
+      "type": "text",
+      "encode": {
+        "enter": {
+          "fill": {
+            "value": "#525252"
+          },
+          "text": {
+            "value": ""
+          }
+        },
+        "update": {
+          "opacity": {
+            "value": 1
+          },
+          "x": {
+            "signal": "width / 2"
+          },
+          "y": {
+            "signal": "height / 2"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontSize": {
+            "signal": "if(width >= height, height, width) * 0.05"
+          },
+          "text": {
+            "signal": "format(datum.sum/1000,'.1f') +' M'"
+          }
         }
       }
     }
