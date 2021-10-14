@@ -158,7 +158,7 @@
               "filter": "datum.ranking == 1"
             },
             {
-              "calculate": "'Country with most people who completed Tertirary education: ' + datum.Country",
+              "calculate": "'Country with most people who completed Tertiary education: ' + datum.Country",
               "as": "text"
             },
             {
