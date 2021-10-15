@@ -208,7 +208,7 @@
           "as": "title"
         }
       ],
-      "title": {"text": {"expr": "country_select.Code + ': Government expenditure Tertiary on education'"}},
+      "title": {"text": {"expr": "country_select.Code + ': Government expenditure on Tertiary education'"}},
       "mark": "bar",
       "encoding": {
         "x": {
