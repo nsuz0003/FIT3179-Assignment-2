@@ -72,3 +72,18 @@ form.vega-bindings {
 input[name="year_select"] {
 	width: 300px;
   }
+#Business {
+	color: #54A24B;
+}
+#Masters {
+	color: #FDC086;
+}
+#ten {
+	color: #439894;
+}
+#fifteen {
+	color: #3C8985;
+}
+#twenty {
+	color: #2F6A68;
+}
