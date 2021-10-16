@@ -3,6 +3,17 @@
   "data": {
     "url": "https://raw.githubusercontent.com/nsuz0003/FIT3179-Assignment-2/main/data/government_spending.csv"
   },
+  "config": {
+    "concat": {
+      "spacing": 20
+    },
+    "font": "Lucida Sans",
+    "axis": {"labelFont": "Lucida Sans", "titleFont": "Lucida Sans"},
+    "legend": {"labelFont": "Lucida Sans", "titleFont": "Lucida Sans"},
+    "header": {"labelFont": "Lucida Sans", "titleFont": "Lucida Sans"},
+    "mark": {"font": "Lucida Sans"},
+    "title": {"font": "Lucida Sans", "subtitleFont": "Lucida Sans"}
+  },
   "params": [
     {
       "name": "year_select",
@@ -16,16 +27,12 @@
       }
     }
   ],
-  "config": {
-    "concat": {
-      "spacing": 20
-    }
-  },
+  
   "hconcat": [
     {
       "title": "Share of the population with tertiary education (above 14 year)",
-      "width": 800,
-      "height": 400,
+      "width": 900,
+      "height": 500,
       "projection": {
         "type": "equirectangular"
       },
@@ -105,7 +112,7 @@
                   15,
                   20
                 ],
-                "scheme": "blues"
+                "range": ["#8EC1BF","#69ADA9", "#439894", "#3C8985", "#2F6A68"]
               },
               "legend": {
                 "orient": "left"
@@ -194,8 +201,8 @@
       ]
     },
     {
-      "height": 400,
-      "width": 450,
+      "height": 500,
+      "width": 700,
       "transform": [
         {
           "filter": "datum.Code == country_select.Code"
@@ -208,7 +215,7 @@
           "as": "title"
         }
       ],
-      "title": {"text": {"expr": "country_select.Code + ': Government expenditure on Tertiary education'"}},
+      "title": {"text": {"expr": "country_select.Code + ': Government expenditure on education'"}},
       "mark": "bar",
       "encoding": {
         "x": {
@@ -222,7 +229,7 @@
           "title": "% of government expenditure on education"
         },
         "color": {
-          "value": "Green"
+          "value": "#54A24B"
         }
       }
     }

@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Graduates by level",
-    "width": 600,
+    "width": 700,
     "height": 600,
     "data": {
         "url": "https://raw.githubusercontent.com/nsuz0003/FIT3179-Assignment-2/main/data/graduate%20level.csv"
@@ -12,6 +12,9 @@
             "select": {"type": "point", "fields": ["key"]}
         }
     ],
+    "config": {
+        "font": "Lucida Sans"
+      },
     "transform": [
         {
             "fold": [

@@ -1,10 +1,13 @@
 {
     "$schema": "https://vega.github.io/schema/vega/v5.json",
     "description": "An example of a space-fulling radial layout for hierarchical data.",
-    "width": 600,
+    "width": 1000,
     "height": 600,
     "padding": 50,
-    "autosize": "none",
+    "autosize": {
+      "type": "fit",
+      "resize": true
+    },
     "title": {
       "text": "Field of Graduates in Australia (2019)",
       "frame": "group"
@@ -124,7 +127,7 @@
             },
         "fillOpacity": {"signal": "datum.key == 'Female' ? 0.5 : 0.8"},
             "tooltip": {
-              "signal": "datum.Field + (datum.key != datum.Field ? ' - ' + datum.key : '') + (datum.value ? ': ' + datum.value + ' people' : '')"
+              "signal": "datum.Field + (datum.key != datum.Field ? ' - ' + datum.key : '') + (datum.value ? ': ' + format(datum.value,',d') + ' people' : '')"
             }
           },
           "update": {
