@@ -1,28 +1,33 @@
 #symbol_map {
 	display: inline-block;
-	width: 1500px;
-	margin-left: 0;
-	/*height: 720px;
-	width: 1280px;*/
+	margin: auto;
+
 }
 #sunburst {
-	display: inline-block;
+	display:block;
+	width: 1000px;
 }
 #area {
-	display: inline-block;
+	display: block;
+	width: 870px;
 }
 #text1 {
-
-	text-align: left;
-	font-family: Lucida Sans Unicode;
-	width: fit-content;
+	margin: auto;
+	font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif; 
+	width: 1000px;
+	text-align: center;
 }
-p {
-	width: 300px;
- }
 #text2 {
-	font-family: Lucida Sans Unicode; 
-  	width: fit-content;
+	font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif; 
+  	width: 1000px;
+	text-align: center;
+	margin: auto;
+}
+#col1 {
+	width: 52%
+}
+#col2 {
+	width: 48%
 }
 .column {
 	float: left;
@@ -36,9 +41,34 @@ p {
 	clear: both;
 }
 /* headings */
-.centred { 
+.title { 
 	margin: auto;
-	padding: 10px;
 	text-align: center;
-	font-family: Lucida Sans Unicode; 
+	font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif; 
 }
+.name {
+	margin: auto;
+	text-align: center;
+	font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif; 
+}
+.subheading{ 
+	margin: auto;
+	padding: 30px;
+	padding-bottom: 60px;
+	text-align: center;
+	font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif; 
+}
+form.vega-bindings {
+	position: absolute;
+	left: 80px;
+	bottom: 15px;
+  }
+.vega-bind > label > span {
+	font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif; 
+	padding-right: 10px;
+	vertical-align: top;
+	padding-left: 10px; 
+}
+input[name="year_select"] {
+	width: 300px;
+  }
