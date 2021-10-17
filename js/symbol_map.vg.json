@@ -8,11 +8,25 @@
       "spacing": 20
     },
     "font": "Lucida Sans",
-    "axis": {"labelFont": "Lucida Sans", "titleFont": "Lucida Sans"},
-    "legend": {"labelFont": "Lucida Sans", "titleFont": "Lucida Sans"},
-    "header": {"labelFont": "Lucida Sans", "titleFont": "Lucida Sans"},
-    "mark": {"font": "Lucida Sans"},
-    "title": {"font": "Lucida Sans", "subtitleFont": "Lucida Sans"}
+    "axis": {
+      "labelFont": "Lucida Sans",
+      "titleFont": "Lucida Sans"
+    },
+    "legend": {
+      "labelFont": "Lucida Sans",
+      "titleFont": "Lucida Sans"
+    },
+    "header": {
+      "labelFont": "Lucida Sans",
+      "titleFont": "Lucida Sans"
+    },
+    "mark": {
+      "font": "Lucida Sans"
+    },
+    "title": {
+      "font": "Lucida Sans",
+      "subtitleFont": "Lucida Sans"
+    }
   },
   "params": [
     {
@@ -27,7 +41,6 @@
       }
     }
   ],
-  
   "hconcat": [
     {
       "title": "Share of the population with tertiary education (above 14 year)",
@@ -112,7 +125,13 @@
                   15,
                   20
                 ],
-                "range": ["#8EC1BF","#69ADA9", "#439894", "#3C8985", "#2F6A68"]
+                "range": [
+                  "#8EC1BF",
+                  "#69ADA9",
+                  "#439894",
+                  "#3C8985",
+                  "#2F6A68"
+                ]
               },
               "legend": {
                 "orient": "left"
@@ -176,7 +195,6 @@
               "calculate": "-90",
               "as": "y"
             }
-            
           ],
           "mark": {
             "type": "text",
@@ -184,15 +202,14 @@
             "dy": -5
           },
           "encoding": {
-            
             "longitude": {
-          "field": "x",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "y",
-          "type": "quantitative"
-        },
+              "field": "x",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "y",
+              "type": "quantitative"
+            },
             "text": {
               "field": "text"
             }
@@ -215,13 +232,21 @@
           "as": "title"
         }
       ],
-      "title": {"text": {"expr": "country_select.Code + ': Government expenditure on education'"}},
-      "mark": "bar",
+      "title": {
+        "text": {
+          "expr": "country_select.Code + ': Government expenditure on education'"
+        }
+      },
+      "mark": {
+        "type": "line",
+        "point": true
+      },
       "encoding": {
         "x": {
           "field": "Year",
-          "type": "nominal",
-          "title": "Year"
+          "type": "temporal",
+          "title": "Year",
+          "timeUnit": "year"
         },
         "y": {
           "field": "Value",
