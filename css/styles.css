@@ -1,7 +1,8 @@
 #symbol_map {
 	display: inline-block;
 	margin: auto;
-
+	width: 100%;
+	padding-bottom: 30px;
 }
 #sunburst {
 	display:block;
@@ -32,6 +33,7 @@
 .column {
 	float: left;
 	vertical-align: top;
+	padding-bottom: 30px;
   }
   
   /* Clear floats after the columns */
@@ -61,7 +63,7 @@
 form.vega-bindings {
 	position: absolute;
 	left: 80px;
-	bottom: 15px;
+	bottom: 50px;
   }
 .vega-bind > label > span {
 	font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif; 
